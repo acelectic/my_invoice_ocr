@@ -1,0 +1,8 @@
+host: http://localhost:3000
+sidekiq:
+  web:
+    username: invoice_validator_web_redis
+    password: invoice_validator_web_redis
+redis:
+  url: 'redis://192.168.1.37:6380/5' 
+  namespace: invoice_validator_web_redis

@@ -1,0 +1,17 @@
+<p style="padding-top: 5px; padding-left: 5px;  margin-bottom: 0px;">การตรวจสอบใบกำกับภาษี ประจำวันที่
+	<% if @start_date != "วันที่เริ่มต้น" and @end_date == "วันที่สิ้นสุด" %>
+		<%= @start_date %> - <%= DateTime.now.strftime('%d/%m/%Y') %>
+	<% elsif @start_date != "วันที่เริ่มต้น" and @end_date != "วันที่สิ้นสุด" %>
+		<%= @start_date %> - <%= @end_date %>
+	<% elsif @start_date == "วันที่เริ่มต้น" and @end_date != "วันที่สิ้นสุด" %>
+		 <%= @end_date %>
+	<% end %>
+</p>
+<p class="p-navigator-size" style="padding-top: 10px; padding-left: 5px; padding-bottom: 7px; margin-bottom: 0px; font-weight: 100;">
+        <a href="<%= invoices_history_path(filter: @filter_params, start_date: @start_date, end_date: @end_date) %>" style="color: #000000">เมนูตรวจสอบใบกำกับภาษี </a>
+        > 
+        <a href="<%= suspect_invoices_history_path(distribution_center_id: @distribution_center_id, start_date: @start_date, end_date: @end_date, is_history: @is_history, filter: @filter_params, dc_route_code: @dc_route_code_params, invoice_date: @invoice_date_params, status: @status_params, ocr_status: @ocr_status_params) %>" style="color: #000000">ประวัติการทำรายการ OCR </a>
+</p>
+<%= render "suspect_invoices/table_header"%>
+<%= render "suspect_invoices/table_body"%>
+</div>     

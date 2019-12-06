@@ -1,0 +1,46 @@
+
+<div class="modal fade" id="select-reason-modal" tr_invoice_id="<%= @data[:tr_invoice_id] %>" tabindex="-1" role="dialog" aria-labelledby="select-reason-modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="select-reason-title">สถานะการตรวจ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>ผลการตรวจสอบความถูกต้องใบกำกับภาษี</p>
+        <div class="radio-btn-modal">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="radio-invalid" name="radio-btn" checked>
+            <label class="form-check-label" for="materialInline1">ผิดจริง</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="radio-valid" name="radio-btn">
+            <label class="form-check-label" for="materialInline2">ไม่ผิด</label>
+          </div>
+        </div>
+        <div class="select-modal">
+          <select class="form-control my-font-size" style="display: inline;" id="select-invalid">
+            <option value="" hidden selected>Example Placeholder</option>
+            <% @invalid_reasons[0..-1].each do |reason| %>
+              <option value="<%= reason[:reason_id] %>" ><%= reason[:desc] %></option>
+            <% end %>
+          </select>
+          <select class="form-control my-font-size" style="display: inline;" id="select-valid" hidden>
+            <option value="" hidden selected>Example Placeholder</option>
+            <% @valid_reasons[0..-1].each do |reason| %>
+              <option value="<%= reason[:reason_id] %>" ><%= reason[:desc] %></option>
+            <% end %>    
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="summit-reason-modal" type="button" class="btn btn-primary" data-dismiss="modal" disabled>ตกลง</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        
+      </div>
+
+    </div>
+  </div>
+</div>

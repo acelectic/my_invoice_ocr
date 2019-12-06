@@ -1,0 +1,23 @@
+
+<div class="row" style="padding-top: 5px; padding-left: 5px; margin-bottom: 0px;">
+    <span class=" my-font-size" style="padding-right: 0.5rem; padding-top: 0.2rem; padding-left: 1rem">วันที่ต้องการดูข้อมูล</span>
+
+    <div class="col-sm-10" style="padding-left: 0rem;">
+        <% if @end_date == "วันที่สิ้นสุด"%>
+            <input type="text" name="start_date" id="start_date" data-provide='datepicker' value="<%= @start_date %>">
+        <% else %>
+            <input type="text" name="start_date" id="start_date" data-provide='datepicker' value="<%= @start_date %>" data-date-end-date="<%= @end_date %>">
+        <% end %>
+
+        <% if @start_date == "วันที่เริ่มต้น"%>
+            <input type="text" name="end_date"   id="end_date"   data-provide='datepicker' value="<%= @end_date %>" >
+        <% else %>
+            <input type="text" name="end_date"   id="end_date"   data-provide='datepicker' value="<%= @end_date %>"  data-date-start-date="<%= @start_date %>"> 
+        <% end %>
+    
+    </div>    
+</div>
+
+
+<%= render "invoices/header"%>
+<%= render "invoices/table"%>

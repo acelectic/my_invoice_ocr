@@ -1,0 +1,230 @@
+// Place all the styles related to the Reason_management controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.edit_icon {
+    width: 2rem;
+}
+
+.table thead th {
+    border-bottom: none !important;
+}
+
+#reason_body {
+    background-color: white !important;
+    padding: 1.1rem;
+}
+
+.validate_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    tr {
+        display: flex;
+        align-items: center;
+        
+    }
+    
+    .reason_seq {
+        flex: 5%;
+    }
+
+    .reason_normal{
+        flex: 13%;
+    }
+
+    .reason_desc {
+        flex: 40%;
+    }
+    .reason_small {
+        flex: 10%;
+    }
+
+    .reason_row {
+
+        background-color: white !important;
+
+        input, select {
+            width: 100%;
+        }
+        .reason_seq {
+            justify-content: right;
+        }
+        .reason_desc{
+            width: 100%;
+            justify-content: left;
+        }
+
+
+        td {
+            display: flex;
+            justify-content: center;
+            padding: 0.6rem 0.75rem;
+        } 
+    }
+}    
+
+.reason_row_head th, .nav-link {
+    text-align: center;
+    font-weight: bolder !important;
+}
+
+td input, #is_active{
+    width: 100%;
+    border: 2px solid black;
+    border-radius: unset;
+}
+
+input {
+    padding: 5px;
+    height: calc(1.5em + 0.75rem + 2px) !important;
+}
+
+#new_reason_btn {
+    padding: 0.3rem 1.2rem;
+    background:black;
+    color:white;
+    font-size: 1.1rem;
+}
+
+#head_title{
+    margin: 5px 0rem;
+}
+
+#summit_cell {
+    display: flex;
+
+    button {
+        padding: 0.1rem 1rem;
+        background:black;
+        color:white;
+        font-size: 1.1rem;
+    }
+}
+.new_reason_btn_cell{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#nav-tab {
+    background-color: transparent !important;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 !important;
+}
+
+.nav-link-me {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    background-color: white !important;
+    margin-right: 0.5rem;
+}
+
+.modabody{
+    font-weight: bold;
+    text-align: left;
+    margin: 2rem;
+}
+
+.modal-title{
+    font-size: 1rem;
+}
+
+.hidden_arrow {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+
+.no_input {
+    background: gray !important;
+}
+
+#alert_modalTitle {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) {
+
+    #summit_cell {
+        display: flex;
+    
+        button {
+            padding: 0.1rem 0.8rem;
+            background:black;
+            color:white;
+            font-size: 0.5rem;
+        }
+    }
+
+
+
+    .edit_icon {
+        width: 1.4rem;
+    }
+
+    #new_reason_btn {
+        padding: 0.3rem 1.2rem;
+        background:black;
+        color:white;
+        font-size: 0.8rem;
+    }
+
+    .validate_content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    
+        tr {
+            display: flex;
+            align-items: center;
+            
+        }
+        
+        .reason_seq {
+            flex: 5%;
+        }
+    
+        .reason_normal{
+            flex: 13%;
+        }
+    
+        .reason_desc {
+            flex: 35%;
+        }
+        .reason_small {
+            flex: 13%;
+        }
+    
+        .reason_row {
+    
+            background-color: white !important;
+    
+            input, select {
+                width: 100%;
+            }
+            .reason_seq {
+                justify-content: right;
+            }
+            .reason_desc{
+                width: 100%;
+                justify-content: left;
+            }
+    
+    
+            td {
+                display: flex;
+                justify-content: center;
+                padding: 0.6rem 0.75rem;
+            } 
+        }
+    }    
+    
+
+}

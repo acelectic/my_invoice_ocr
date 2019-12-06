@@ -1,0 +1,23 @@
+{
+  "name": "invoice_ocr",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0-alpha",
+    "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^6.0.0-alpha",
+    "@rails/webpacker": "^4.2.0",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-datepicker": "^1.9.0",
+    "jquery": "^3.4.1",
+    "jquery-ujs": "^1.2.2",
+    "popper.js": "^1.15.0",
+    "rails-ujs": "^5.2.3",
+    "styled-components": "^4.4.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.9.0"
+  }
+}

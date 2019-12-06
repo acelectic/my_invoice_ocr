@@ -1,0 +1,59 @@
+<div id="table" class="table-editable my-custom-scrollbar" style="background-color:  #fff">
+    <div class="row">
+        <div class="col-sm-3 col-3 header-table">
+            <p class="p-first-table">ประวัติการทำรายการ</p>
+        </div>
+        <div class="col-sm-6 col-5">
+        </div>
+        <div class="col-sm-3 col-4 header-table">
+            <div id="is_history" value="<%= @is_history %>">
+            </div>
+            <select class="form-control my-font-size" name="filter" id="filter" style="display: inline;" >
+                <% @filter_list.each_with_index do |filter, index| %>
+                    <% if index.to_s == @filter_params %>
+                        <option value="<%= index.to_s %>" selected ><%= filter %></option> 
+                    <% else %>
+                        <option value="<%= index.to_s %>"><%= filter %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <button type="button my-font-size" class="btn btn-info my-font-size">Export CSV</button>
+        </div>
+    </div>
+
+    <table class="table table-striped table-wrapper-scroll-y">
+        <thead style="background-color:  #fff;">
+            <tr>
+                <th class="th-left">ลำดับ</th>
+                <th class="th-center">รหัส</th>
+                <th class="th-center">ชื่อสาขา</th>
+                <th class="th-right">จำนวนใบกำกับภาษีที่ตรวจทั้งหมด</th>
+                <th class="th-right">จำนวนใบกำกับภาษีที่ถูกต้อง</th>
+                <th class="th-right">จำนวนใบกำกับภาษีที่ต้องสงสัย</th>
+                <th class="th-center">สถานะการตรวจ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @transaction_invoices.each do |transaction_invoice| %>
+                <% if @is_history.nil? %>
+                    <tr onclick='Turbolinks.visit("<%= suspect_invoices_path(distribution_center_id: transaction_invoice[:distribution_center_id], ocr_date: @ocr_date, filter: @filter_params)%>")' style="cursor: pointer;"> 
+                <% elsif @is_history == true%>
+                    <tr onclick='Turbolinks.visit("<%= suspect_invoices_history_path(distribution_center_id: transaction_invoice[:distribution_center_id], start_date: @start_date, end_date: @end_date, filter: @filter_params)%>")' style="cursor: pointer;"> 
+                <% end %>
+                    <td class="td-center"><%= @index %></td></a> 
+                    <td class="td-center"><%= transaction_invoice[:distribution_center_code] %></td>
+                    <td class="td-left">  <%= transaction_invoice[:distribution_center_name] %></td>
+                    <td class="td-right"> <%= transaction_invoice[:total_verified_invoice_qty] %></td>
+                    <td class="td-right"> <%= transaction_invoice[:correct_verified_invoice_qty] %></td>
+                    <td class="td-right"> <%= transaction_invoice[:suspect_verified_invoice_qty] %></td>
+                    <% if transaction_invoice[:is_verified]%>
+                        <td class="complete-text">สมบูรณ์</td>
+                    <% else %>
+                        <td class="incomplete-text">ไม่สมบูรณ์</td>
+                    <% end %>
+                </tr>
+                <% @index += 1 %>
+            <% end %>
+        </tbody>
+    </table>
+</div>

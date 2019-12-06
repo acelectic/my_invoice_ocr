@@ -1,0 +1,8 @@
+host: http://localhost:3000
+sidekiq:
+  web:
+    username: invoice-ocr
+    password: invoice-ocr
+redis:
+  url: <%= ENV['REDIS_HOST'] || 'redis://localhost:6380/5' %>
+  namespace: invoice-ocr

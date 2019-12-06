@@ -1,0 +1,15 @@
+<div class='validate_content'>
+    <div id='head_title' alert=<%= @alert %>>
+        จัดการหมายเหตุ
+    </div>
+    <% if @reason_type == '0' %>
+        <%= render "invalid" %>
+    <% else %>
+        <%= render "valid" %>
+    <% end %>
+
+    <%= render "table"%>
+    
+    
+    <%= render "alert_modal" %>
+</div>

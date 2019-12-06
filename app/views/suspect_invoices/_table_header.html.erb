@@ -1,0 +1,66 @@
+<div id="table" class="table-editable my-custom-scrollbar" style="background-color:  #fff; height: 800px;">
+    <div class="row">
+        <div class="col-sm-4 header-table">
+            <h3 class="h3-first-table">รหัส <%= @data[:distribution_center_code] %> ชื่อสาขา <%= @data[:distribution_center_name] %></h3>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6 header-table">
+            <div id="is_history"             value="<%= @is_history %>">
+            </div>
+            <div id="filter"                 value="<%= @filter_params %>">
+            </div>
+            <div id="distribution_center_id" value="<%= @distribution_center_id %>">
+            </div>
+
+            <div id="ocr_date"   value="<%= @ocr_date %>">
+            </div>
+            <div id="start_date_params" value="<%= @start_date %>">
+            </div>
+            <div id="end_date_params"   value="<%= @end_date %>">
+            </div>
+           
+            <select id="dc_route_code" name="dc_route_code" class="form-control my-font-size" style="display: inline;">
+                <% @dc_routes_code_list.each do |dc_route_code| %>
+                    <% if dc_route_code == @dc_route_code_params %>
+                        <option value="<%= dc_route_code %>" selected ><%= dc_route_code %></option> 
+                    <% else %>
+                        <option value="<%= dc_route_code %>"><%= dc_route_code %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <select id="invoice_date" name="invoice_date" class="form-control my-font-size" style="display: inline;">
+                <% @invoice_date_list.each do |invoice_date| %>
+                    <% if invoice_date.to_s == @invoice_date_params %>
+                        <option value="<%= invoice_date %>" selected ><%= invoice_date %></option> 
+                    <% else %>
+                        <option value="<%= invoice_date %>"><%= invoice_date %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <select id="status" name="status" class="form-control my-font-size" style="display: inline;">
+                <% @status_list.each_with_index do |status, index| %>
+                    <% if index.to_s == @status_params %>
+                        <option value="<%= index.to_s %>" selected ><%= status %></option> 
+                    <% else %>
+                        <option value="<%= index.to_s %>"><%= status %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <select id="ocr_status" name="ocr_status" class="form-control my-font-size" style="display: inline;">
+                <% @ocr_status_list.each_with_index do |ocr_status, index| %>
+                    <% if index.to_s == @ocr_status_params %>
+                        <option value="<%= index.to_s %>" selected ><%= ocr_status %></option> 
+                    <% else %>
+                        <option value="<%= index.to_s %>"><%= ocr_status %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            
+        </div>
+        <div class="col-sm-6">
+            <span class="p-second-table">ใบกำกับภาษีที่ตรวจ =   <%= @data[:total_verified_invoice_qty] %></span>
+            <span class="p-second-table">ใบกำกับภาษีที่ถูกต้อง =  <%= @data[:correct_verified_invoice_qty] %></span>
+            <span class="p-second-table">ใบกำกับภาษีต้องสงสัย = <%= @data[:suspect_verified_invoice_qty] %></span>
+        </div>
+    </div>                                                                                                                                                                                                                                             

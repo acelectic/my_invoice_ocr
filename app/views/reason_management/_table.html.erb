@@ -1,0 +1,73 @@
+<div id="reason_body">
+    <table name='reasons_table' value=<%= @reason_type %>  user_id=<%= @user_id %> class="table table-striped table-wrapper-scroll-y">
+        <thead style="background-color:  #fff;">
+            <tr class="reason_row_head">
+                <th class="reason_seq">ลำดับ</th>
+                <th class="reason_normal">ID</th>
+                <th class="reason_desc">เหตุผล</th>
+                <th class="reason_small">สถานะ</th>
+                <th class="reason_normal">แก้ไขล่าสุดโดย</th>
+                <th class="reason_small">Action</th>
+            </tr>
+        </thead>
+        <tbody name="reasons_table_body">
+            <% @data.each do |reason| %>
+                
+                <tr class="reason_row">
+                    <td class="reason_seq"><%= @index_invalid %></td>
+                    <td class="reason_normal"><label type="text" id="reason_code" name="reason_code" value="<%= reason[:reason_code] %>" ><%= reason[:reason_code] %></label></td>
+                    <td class="reason_desc"><input type="text" id="desc" name="desc" value="<%= reason[:desc] %>" required="required" pattern="[A-Za-z0-9]{1,20}"disabled ></td>
+                    <td class="reason_small">
+                        <select class="form-control my-font-size hidden_arrow" style="display: inline;" id="is_active" name='is_active' disabled>
+                            <% if reason[:is_active] == true %>
+                                <option value="<%= true %>" selected >Active</option>
+                                <option value="<%= false %>">Inactive</option>
+                            <% else %>
+                                <option value="<%= true %>">Active</option>
+                                <option value="<%= false %>" selected >Inactive</option>
+                            <% end %>
+                        </select>
+                    </td>
+                    <td class="reason_normal"><label type="text" id="updator" name="updator" value="<%= reason[:updator] %>"><%= reason[:updator] %></label></td>
+                    <td class="reason_small">
+                        <div name='edit_icon' >
+                            <%= image_tag("edit_icon.png",  class: "edit_icon" ) %>
+                        </div>
+                        <div id='summit_cell' name='edit_cell' hidden>
+                            <button name='summit_edit' type='button'>ยืนยัน</button>
+                            <button name='cancel_edit' type='button'>ยกเลิก</button>
+                        </div>
+                    </td>
+                </tr>
+               
+                <% @index_invalid += 1 %>
+            <% end %>
+
+            <tr class="reason_row" hidden>
+                <td class="reason_seq"><%= @index_invalid %></td>
+                <td class="reason_normal"><label type="text" id="reason_code" name="reason_code" value="" ></label></td>
+                <td class="reason_desc"><input type="text" id="desc" name="desc" value="" pattern="[A-Za-z0-9]{1,20}" ></td>
+                <td class="reason_small">
+                    <select class="form-control my-font-size hidden_arrow" style="display: inline;" id="is_active" name='is_active' >
+                            <option value="<%= true %>" selected >Active</option>
+                            <option value="<%= false %>">Inactive</option>
+                    </select>
+                </td>
+                <td class="reason_normal"><label type="text" id="updator" name="updator" value="<%= @user_id %>"><%= @user_id %></label></td>
+                <td class="reason_small">
+                    <div name='edit_icon' >
+                        <%= image_tag("edit_icon.png",  class: "edit_icon" ) %>
+                    </div>
+                    <div id='summit_cell' name='edit_cell' hidden>
+                        <button name='summit_edit' type='button'>ยืนยัน</button>
+                        <button name='cancel_edit' type='button'>ยกเลิก</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class='base-margin new_reason_btn_cell' >
+        <button id="new_reason_btn" name="new_reason_btn" type="button" value="<%= @index_invalid %>">เพิ่มเหตุผลใหม่</button>
+    </div>
+</div>
+

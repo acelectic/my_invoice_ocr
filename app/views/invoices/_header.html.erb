@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-sm-7" style="padding-right: 1px;">
+        <div class="box-invoice" style="background-color: #A4C494">
+            <div class="col-sm-4" style="padding-left: 1px; padding-right: 1px">
+                <div class="card-invoice">
+                    <div class="card-body-invoice">
+                        <p class="card-text" style="margin-bottom: 20px">จำนวนใบกำกับภาษีที่ตรวจทั้งหมด</p>
+                        <h1><%= @summary_invoice[:total_verified_invoice_qty] %></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4"style="padding-left: 1px; padding-right: 1px">
+                <div class="card-invoice">
+                    <div class="card-body-invoice">
+                        <p class="card-text" style="margin-bottom: 20px">จำนวนใบกำกับภาษีที่ถูกต้อง</p>
+                        <h1><%= @summary_invoice[:correct_verified_invoice_qty] %></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-left: 1px; padding-right: 1px">
+                <div class="card-invoice">
+                    <div class="card-body-invoice">
+                        <p class="card-text" style="margin-bottom: 20px">จำนวนใบกำกับภาษีที่ต้องสงสัย</p>
+                        <h1><%= @summary_invoice[:suspect_verified_invoice_qty] %></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5" style="padding-left: 0px;">
+        <div class="box-invoice" style="background-color: #EBCC7C">
+            <div class="col-sm-6" style="padding-left: 1px; padding-right: 1px">
+                <div class="card-invoice">
+                    <div class="card-body-invoice">
+                        <p class="card-text" style="margin-bottom: 20px">จำนวนใบกำกับภาษีที่แผ่นไม่ครบ</p>
+                        <h1><%= @summary_invoice[:incomplete_verified_invoice_qty] %></h1>
+                    </div>
+                    <div class="card-invoice-suspect-detail">
+                        <p class="card-text-suspect-invoice-detail">ดูรายละเอียด </p>
+                        <p class="card-text-suspect-invoice-detail"> > </p> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding-left: 1px; padding-right: 1px">
+                <div class="card-invoice">
+                    <div class="card-body-invoice">
+                        <p class="card-text" style="margin-bottom: 20px">จำนวนใบกำกับภาษีที่ตรวจไม่ได้</p>
+                        <h1><%= @summary_invoice[:unverifiable_invoice_qty] %></h1>
+                    </div>
+                    <div class="card-invoice-suspect-detail">
+                        <p class="card-text-suspect-invoice-detail">ดูรายละเอียด </p>
+                        <p class="card-text-suspect-invoice-detail"> > </p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

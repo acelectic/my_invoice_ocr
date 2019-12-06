@@ -1,0 +1,23 @@
+---
+:logfile: ./log/sidekiq.log
+:concurrency: 5
+:queues:
+  - default
+  - test_queue
+  # - sync_user_queue
+  # - sync_po_queue
+  # - sync_withdraw_queue
+  # - sync_master_data_queue
+  # - sync_presale_queue
+  # - sync_customer_request_up_queue
+  # - sync_customer_store_up_queue
+:limits:
+  default: 1
+  test_queue: 1
+  # sync_user_queue: 1
+  # sync_po_queue: 1
+  # sync_withdraw_queue: 1
+  # sync_master_data_queue: 1
+  # sync_presale_queue: 1
+  # sync_customer_request_up_queue: 1
+  # sync_customer_store_up_queue: 1

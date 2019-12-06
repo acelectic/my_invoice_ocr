@@ -1,0 +1,10 @@
+<p style="padding-top: 5px; padding-left: 5px;  margin-bottom: 0px;">การตรวจสอบใบกำกับภาษี ประจำวันที่ <%= DateTime.now.strftime('%d/%m/%Y') %></p>
+<p class="p-navigator-size" style="padding-top: 10px; padding-left: 5px; padding-bottom: 7px; margin-bottom: 0px; font-weight: 100;">
+        <a href="<%= invoices_path(filter: @filter_params) %>" style="color: #000000">เมนูตรวจสอบใบกำกับภาษี </a>
+        > 
+        <a href="<%= suspect_invoices_path(distribution_center_id: @distribution_center_id, ocr_date: @ocr_date, filter: @filter_params, dc_route_code: @dc_route_code_params, invoice_date: @invoice_date_params, status: @status_params, ocr_status: @ocr_status_params) %>" style="color: #000000">ประวัติการทำรายการ OCR </a>
+</p>
+
+<%= render "table_header"%>
+<%= render "table_body"%>
+</div>         

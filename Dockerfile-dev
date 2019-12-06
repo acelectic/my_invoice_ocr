@@ -1,0 +1,26 @@
+FROM jruby:9.2.7-alpine
+
+ARG APP_HOME="/app"
+WORKDIR $APP_HOME
+
+RUN apk add --update --no-cache bash \
+    build-base \
+    nodejs \
+    yarn \
+    tzdata
+
+RUN gem uninstall -i /opt/jruby/lib/ruby/gems/shared bundler -v 2.0.1 \
+    && gem uninstall -i /opt/jruby/lib/ruby/gems/shared bundler -v 1.16.6 \
+    && gem install -i /opt/jruby/lib/ruby/gems/shared bundler -v 1.17.1 \
+    && gem install rails -v 6.0.0 \
+    && rm -rf ./tmp/pids/*
+
+
+# Cache bundle install
+COPY Gemfile Gemfile.lock ./
+RUN bundle install --clean
+
+# Install webpacker
+RUN yarn add webpacker \
+    && yarn add core-js regenerator-runtime \
+    && rails webpacker:install

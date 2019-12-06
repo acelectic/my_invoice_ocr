@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: customer_store_departments
+#
+#  id                     :bigint           not null, primary key
+#  sale_date              :date             not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  customer_store_id      :integer          not null
+#  dc_route_id            :integer          not null
+#  distribution_center_id :integer          not null
+#
+# Indexes
+#
+#  index_customer_store_departments_unique  (dc_route_id,distribution_center_id,customer_store_id) UNIQUE
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

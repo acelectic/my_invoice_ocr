@@ -1,0 +1,4 @@
+GET_FILE:
+  cron: "* * * * * Asia/Bangkok"
+  class: GetFile
+  queue: test_queue

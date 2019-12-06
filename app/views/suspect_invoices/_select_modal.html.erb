@@ -1,0 +1,5 @@
+<% if @valid_reasons.count > 0 and @invalid_reasons.count > 0 %>
+    <%= render "suspect_invoices/reason_modal" %>
+<% elsif @valid_reasons.count == 0 or @invalid_reasons.count == 0 %>
+    <%= render "suspect_invoices/please_add_reason"%>
+<% end %>

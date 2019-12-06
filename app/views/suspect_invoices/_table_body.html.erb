@@ -1,0 +1,49 @@
+
+<table class="table table-striped table-wrapper-scroll-y">
+    <thead style="background-color:  #fff;">
+        <tr>
+            <th class="th-left">ลำดับ</th>
+            <th class="th-center">หน่วยขาย</th>
+            <th class="th-center">เลขที่ใบกำกับภาษี</th>
+            <th class="th-center">รหัสร้านค้า</th>
+            <th class="th-center">ชื่อร้านค้า</th>
+            <th class="th-center">วันที่ใบกำกับภาษี</th>
+            <th class="th-center">ประเภทการขาย</th>
+            <th class="th-center">ผลลัพธ์ OCR</th>
+            <th class="th-center">ผู้ตรวจ</th>
+            <th class="th-center">สถานะการตรวจ</th>
+            <th class="th-center">หมายเหตุ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @data[:suspect_invoices].each do |invoice_suspect| %>
+            <% if @is_search == true %>
+                <tr>
+            <% elsif @is_history.nil? %>
+                <tr onclick='Turbolinks.visit("<%= suspect_invoice_path(distribution_center_id: @data[:distribution_center_id], ocr_date: @data[:ocr_date], page: @index, dc_route_code: @dc_route_code_params, invoice_date: @invoice_date_params, status: @status_params, ocr_status: @ocr_status_params, filter: @filter_params) %>")' style="cursor: pointer;">
+            <% elsif @is_history == true%>
+                <tr onclick='Turbolinks.visit("<%= suspect_invoice_history_path(distribution_center_id: @data[:distribution_center_id], start_date: @data[:start_date], end_date: @data[:end_date], page: @index, dc_route_code: @dc_route_code_params, invoice_date: @invoice_date_params, status: @status_params, ocr_status: @ocr_status_params, filter: @filter_params) %>")' style="cursor: pointer;">
+            <% end %>
+                <td class="td-center"> <%=  @index %>                                     </td>
+                <td class="td-center"> <%= invoice_suspect[:dc_route_code] %>       </td>
+                <td class="td-center"> <%= invoice_suspect[:vat_no] %>              </td>
+                <td class="td-center"> <%= invoice_suspect[:customer_store_code] %> </td>
+                <td class="td-left">   <%= invoice_suspect[:customer_store_name] %> </td>
+                <td class="td-center"> <%= invoice_suspect[:invoice_date] %>            </td>
+                <td class="td-center"> <%= invoice_suspect[:customer_store_type] %> </td>
+                <% if invoice_suspect[:reason_type] == nil %>
+                    <td class="td-center"><%= image_tag("warning.png", class: "result-icon-size")%></td>
+                <% elsif invoice_suspect[:reason_type] == true %>
+                    <td class="td-center"><%= image_tag("true.png", class: "result-icon-size")%>   </td>
+                <% elsif invoice_suspect[:reason_type] == false %>
+                    <td class="td-center"><%= image_tag("false.png", class: "result-icon-size")%>  </td>
+                <% end %>
+                <td class="td-center"> <%= invoice_suspect[:user_id] %>             </td>
+                <td class="td-center"> <%= invoice_suspect[:status] %>              </td>
+                <td class="td-center"> <%= invoice_suspect[:remark] %>              </td>
+            </tr>
+            <% @index += 1 %>
+        <% end %>
+    </tbody>
+</table>
+                                                                                                                                                                                                                            
